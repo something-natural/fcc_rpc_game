@@ -27,6 +27,7 @@ const pcContainer = document.getElementById('computer-score');
 let playerScore = 0
 let pcScore = 0
 
+
 // return computer action using Math.random. don't use Math.Round
 function getComputerResult(){
     const options = ["Rock", "Paper", "Scissors"];
@@ -34,10 +35,12 @@ function getComputerResult(){
     return result;
 }
 
+
 // return who is winner by boolean (true -> player)
 function winOrLose(user, pc){      
   return ((user === "Rock" && pc === "Scissors") || (user === "Scissors" && pc == "Paper") || (user === "Paper" && pc === "Rock"));
 } 
+
 
 // call winOrLose and return resutl text
 function getResult(user){
@@ -71,9 +74,19 @@ function showResult(user){
    }
 }
 
+// reset global vars and reberse elements display style
+function reset(){ 
+   playerScore = 0;
+   pcScore = 0;
+   resultMsg.innerText = "";
+   psContainer.innerText = playerScore;
+   pcContainer.innerText = pcScore;
+   reBtn.style.display = 'none';
+   optContainer.style.display = 'block';
+}
 
 rockBtn.addEventListener("click", function(){showResult("Rock")});
 papBtn.addEventListener("click", function(){showResult("Paper")});
 sciBtn.addEventListener("click", function(){showResult("Scissors")});
-
+reBtn.addEventListener("click", function(){reset()});
 

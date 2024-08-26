@@ -19,10 +19,13 @@ const rockBtn = document.getElementById('rock-btn');
 const papBtn = document.getElementById('paper-btn');
 const sciBtn = document.getElementById('scissors-btn');
 const reBtn = document.getElementById('reset-game-btn');
-const playerScore = 0
-const pcScore = 0
+const resultsMsg = document.getElementById('results-msg');
+const psContainer = document.getElementById('player-score');   
+const pcContainer = document.getElementById('computer-score'); 
+let playerScore = 0
+let pcScore = 0
 
-// return coputer action using Math.random. don't use Math.Round
+// return computer action using Math.random. don't use Math.Round
 function getComputerResult(){
     const options = ["Rock", "Paper", "Scissors"];
     const result = options[Math.floor(Math.random() * options.length)];
@@ -34,23 +37,30 @@ function winOrLose(user, pc){
   return ((user === "Rock" && pc === "Scissors") || (user === "Scissors" && pc == "Paper") || (user === "Paper" && pc === "Rock"));
 } 
 
+// call winOrLose and return resutl text
 function getResult(user){
+   
+   // get computer action
    const pc = getComputerResult();
+
+   // 
    const gameResult = winOrLose(user, pc) 
+   if (gameResult){
+      playerScore++;
+      return `Player Wins! ${user} beats ${pc}`;
+   } else if ( user === pc ){
+      return `It's a tie! both chose ${user}`;
+   } else { 
+      pcScore++;
+      return `Computer Wins! ${pc} beats ${user}`;
+   }
 }
 
 
 function showResult(user){
-   // get element to insert text later   
-   const psContainer = document.getElementById('player-score');   
-   const pcContainer = document. getElementById('computer-score');
-   const winnerMsg = document.getElementById   
-
-   // ger result
-   const result = getResult(user);
-   
+   // get element to insert text later        
+   resultsMsg.innerText = getResult(user);   
 }
-
 
 
 rockBtn.addEventListener("click", function(){showResult("Rock")});

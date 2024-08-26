@@ -14,6 +14,13 @@
    b. hide 2b
 */
 
+//global variables
+const rockBtn = document.getElementById('rock-btn');
+const papBtn = document.getElementById('paper-btn');
+const sciBtn = document.getElementById('scissors-btn');
+const reBtn = document.getElementById('reset-game-btn');
+const playerScore = 0
+const pcScore = 0
 
 // return coputer action using Math.random. don't use Math.Round
 function getComputerResult(){
@@ -22,37 +29,32 @@ function getComputerResult(){
     return result;
 }
 
-
 // return who is winner by boolean (true -> player)
-function whosWinner(user){
-   const resultMsg = ""
-   const pc = getComputerResult();
+function winOrLose(user, pc){      
   return ((user === "Rock" && pc === "Scissors") || (user === "Scissors" && pc == "Paper") || (user === "Paper" && pc === "Rock"));
 } 
 
 function getResult(user){
-   // get element to insert text later
-   const playerScore = 0;
-   const pcScore = 0;
-   const psContainer = document.getElementById('player-score');   
-   const pcContainer = document. getElementById('computer-score');
-   const winnerMsg = document.getElementById
-   
-
-   // ger result
-   const result = whosWinner(user);
-   if (result){
-
-   }
+   const pc = getComputerResult();
+   const gameResult = winOrLose(user, pc) 
 }
 
 
-const rockBtn = document.getElementById('rock-btn');
-const papBtn = document.getElementById('paper-btn');
-const sciBtn = document.getElementById('scissors-btn');
+function showResult(user){
+   // get element to insert text later   
+   const psContainer = document.getElementById('player-score');   
+   const pcContainer = document. getElementById('computer-score');
+   const winnerMsg = document.getElementById   
 
-rockBtn.addEventListener("click", function(){getResult("Rock")});
-papBtn.addEventListener("click", function(){getResult("Paper")});
-sciBtn.addEventListener("click", function(){getResult("Scissors")});
+   // ger result
+   const result = getResult(user);
+   
+}
+
+
+
+rockBtn.addEventListener("click", function(){showResult("Rock")});
+papBtn.addEventListener("click", function(){showResult("Paper")});
+sciBtn.addEventListener("click", function(){showResult("Scissors")});
 
 

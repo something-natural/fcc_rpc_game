@@ -19,6 +19,7 @@ const rockBtn = document.getElementById('rock-btn');
 const papBtn = document.getElementById('paper-btn');
 const sciBtn = document.getElementById('scissors-btn');
 const reBtn = document.getElementById('reset-game-btn');
+const optContainer = document.querySelector('.options-container');
 const resultsMsg = document.getElementById('results-msg');
 const psContainer = document.getElementById('player-score');   
 const pcContainer = document.getElementById('computer-score'); 
@@ -57,9 +58,15 @@ function getResult(user){
 }
 
 
-function showResult(user){
-   // get element to insert text later        
-   resultsMsg.innerText = getResult(user);   
+// call getResult and print result, display or hide containers
+function showResult(user){      
+   resultsMsg.innerText = getResult(user);
+   psContainer.innerText = playerScore;
+   pcContainer.innerText = pcScore;
+   if (playerScore === 3 || pcScore === 3){
+      reBtn.style.display = 'block';
+      optContainer.style.display = 'none'
+   }
 }
 
 

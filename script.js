@@ -21,6 +21,7 @@ const sciBtn = document.getElementById('scissors-btn');
 const reBtn = document.getElementById('reset-game-btn');
 const optContainer = document.querySelector('.options-container');
 const resultsMsg = document.getElementById('results-msg');
+const resultMsg = document.getElementById('winner-msg');
 const psContainer = document.getElementById('player-score');   
 const pcContainer = document.getElementById('computer-score'); 
 let playerScore = 0
@@ -65,7 +66,8 @@ function showResult(user){
    pcContainer.innerText = pcScore;
    if (playerScore === 3 || pcScore === 3){
       reBtn.style.display = 'block';
-      optContainer.style.display = 'none'
+      optContainer.style.display = 'none';
+      resultMsg.innerText = playerScore > pcScore ? "Player has won the game!" : "Computer has own the game!"
    }
 }
 

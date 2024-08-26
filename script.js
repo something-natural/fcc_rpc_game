@@ -14,20 +14,36 @@
    b. hide 2b
 */
 
+
+// return coputer action using Math.random. don't use Math.Round
 function getComputerResult(){
     const options = ["Rock", "Paper", "Scissors"];
     const result = options[Math.floor(Math.random() * options.length)];
     return result;
 }
 
+
+// return who is winner by boolean (true -> player)
 function whosWinner(user){
-  const pc = getComputerResult();
+   const resultMsg = ""
+   const pc = getComputerResult();
   return ((user === "Rock" && pc === "Scissors") || (user === "Scissors" && pc == "Paper") || (user === "Paper" && pc === "Rock"));
 } 
 
 function getResult(user){
+   // get element to insert text later
+   const playerScore = 0;
+   const pcScore = 0;
+   const psContainer = document.getElementById('player-score');   
+   const pcContainer = document. getElementById('computer-score');
+   const winnerMsg = document.getElementById
+   
+
+   // ger result
    const result = whosWinner(user);
-   console.log(result);
+   if (result){
+
+   }
 }
 
 
